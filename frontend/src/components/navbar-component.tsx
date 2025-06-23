@@ -2,6 +2,7 @@ import {Navbar, Nav, Dropdown} from 'react-bootstrap';
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import {type ReactElement, useEffect, useState} from "react";
+import { Link } from 'react-router-dom';
 
 const NavbarComponent = (): ReactElement => {
 
@@ -95,10 +96,10 @@ const NavbarComponent = (): ReactElement => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav className="mr-auto">
-              <a className="text-white text-decoration-none">
-                <FaRegUserCircle className="me-2" size={24}/>
+              <Link to="/login" className="text-white text-decoration-none d-flex align-items-center">
+                <FaRegUserCircle className="me-2" size={24} />
                 Iniciar Sesión
-              </a>
+              </Link>
               <a className="text-white ms-3">
                 <FaShoppingCart size={24}/>
               </a>
