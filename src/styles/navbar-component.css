@@ -1,0 +1,47 @@
+.navbar-bg{
+    background-color: #101e8d !important;
+}
+
+.custom-dropdown{
+    color: white !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-weight: bold !important;
+}
+
+.custom-dropdown-toogle{
+    color: white !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-weight: bold !important;
+    &::after {
+        border-top: none !important;
+        content: url("https://cemacogt.vtexassets.com/assets/vtex.file-manager-graphql/images/1ae8755e-c3b8-41b2-8e9a-7f33fbbb940d___08934b794175f2c70f0a5da1d5b8ee1c.svg") !important;
+    }
+}
+
+.grey-section{
+    background-color: #e7e7e7 !important;
+    color: black;
+}
+
+.cemaco-button{
+    background-color: #101e8d !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border: 1px solid transparent !important;
+    height: 50px;
+    width: 120px;
+    font-size: 18px;
+}
+
+.jugueton-button{
+    background-color: #ffff !important;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border: 1px solid transparent !important;
+    height: 50px;
+    width: 120px;
+    font-size: 18px;
+}

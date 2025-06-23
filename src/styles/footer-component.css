@@ -1,0 +1,25 @@
+
+.blue-container {
+    background-color: #101e8d;
+    color: white;
+    text-align: center;
+}
+
+.gray-container {
+    background-color: #f6f6f6;
+    color: black;
+}
+
+.footer-input {
+    border: 1px solid #707070;
+    background-color: #ffff;
+    height: 40px;
+}
+
+.footer-button {
+    background-color: #101e8d !important;
+    color: white;
+    border: 1px solid transparent !important;
+    height: 40px;
+    font-size: 18px;
+}
