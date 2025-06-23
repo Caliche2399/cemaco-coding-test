@@ -38,10 +38,10 @@ const NavbarComponent = (): ReactElement => {
             <div className="w-100 justify-content-center align-items-center d-flex">
               <div className="w-100 d-flex align-items-center" style={{maxWidth: "700px"}}>
                 <button className="cemaco-button">
-                  <img src="../../public/assets/navbar/cemacoGrande.png" width={90} alt="logo-cemaco"/>
+                  <img src="/assets/navbar/cemacoGrande.png" width={90} alt="logo-cemaco"/>
                 </button>
                 <button className="jugueton-button">
-                  <img src="../../public/assets/navbar/juguetonLogoOficial.png" width={90} alt="logo-cemaco"/>
+                  <img src="/assets/navbar/juguetonLogoOficial.png" width={90} alt="logo-cemaco"/>
                 </button>
               </div>
               <div className="d-flex align-items-center justify-content-end">
@@ -71,9 +71,9 @@ const NavbarComponent = (): ReactElement => {
           <a className='navbar-brand'>
             {
               !scrolled ? (
-                <img src="../../public/assets/navbar/cemacoGrande.png" width={120} alt="logo-cemaco"/>
+                <img src="/assets/navbar/cemacoGrande.png" width={120} alt="logo-cemaco"/>
               ): (
-                <img src="../../public/assets/navbar/logoCortoMobile.png" width={40} alt="logo-cemaco"/>
+                <img src="/assets/navbar/logoCortoMobile.png" width={40} alt="logo-cemaco"/>
               )
             }
           </a>

@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "../test-cemaco/node_modules/.bin/vite",
-    "build": "../test-cemaco/node_modules/.bin/tsc -b && vite build",
-    "lint": "../test-cemaco/node_modules/.bin/eslint .",
-    "preview": "../test-cemaco/node_modules/.bin/vite preview"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "bootstrap": "^5.3.7",

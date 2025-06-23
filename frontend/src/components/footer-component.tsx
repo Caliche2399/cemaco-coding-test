@@ -11,7 +11,7 @@ export const FooterComponent = (): ReactElement => {
       <div className="d-flex blue-container py-2 px-5 justify-content-center align-items-center">
         <div className="d-flex justify-content-between align-items-center w-100" style={{maxWidth: "1200px"}}>
           <div className="d-flex gap-2 justify-content-center align-items-center text-center">
-            <img src="../../public/assets/footer/TiendasFooterNew.png" alt="Store icon" height={30} width={30}/>
+            <img src="/assets/footer/TiendasFooterNew.png" alt="Store icon" height={30} width={30}/>
             <span>Tiendas</span>
           </div>
           <div className="d-flex gap-2 justify-content-center align-items-center text-center">
@@ -23,7 +23,7 @@ export const FooterComponent = (): ReactElement => {
             <span>Compra Por Whatsapp</span>
           </div>
           <div className="d-flex gap-2 justify-content-center align-items-center text-center">
-            <img src="../../public/assets/footer/ServicioFooterNew.png" alt="call support icon" height={30} width={30}/>
+            <img src="/assets/footer/ServicioFooterNew.png" alt="call support icon" height={30} width={30}/>
             <span>(502) 2499-9990</span>
           </div>
           <div className="d-flex gap-2 justify-content-center align-items-center text-center">
@@ -69,7 +69,7 @@ export const FooterComponent = (): ReactElement => {
           <div className="d-flex justify-content-end w-100" style={{maxWidth: "550px"}}>
             <div className="d-flex flex-column">
               <section className="d-flex gap-4 mx-4">
-                <img src="../../public/assets/footer/empresaCertificadaNew.png" alt="empresaCertificada"/>
+                <img src="/assets/footer/empresaCertificadaNew.png" alt="empresaCertificada"/>
                 <span className="d-flex flex-column me-5">
                   <span className="fw-semibold big">
                     Somos una empresa B
@@ -85,7 +85,7 @@ export const FooterComponent = (): ReactElement => {
               <input className="rounded-5 footer-input mt-4 me-2 px-3" />
             </div>
             <div className="d-flex flex-column">
-              <img src={"../../public/assets/footer/value.png"} width={143} height={143} alt={"reseñas"}/>
+              <img src={"/assets/footer/value.png"} width={143} height={143} alt={"reseñas"}/>
               <button className="footer-button rounded-5">
                 Suscribirme
               </button>
@@ -99,12 +99,12 @@ export const FooterComponent = (): ReactElement => {
           <a className="text-decoration-underline text-black small">Privacidad</a>
           <a className="text-decoration-underline text-black ms-5 small w-100" style={{maxWidth: "200px"}}>Términos y Condiciones</a>
           <div className="text-end w-100">
-            <img src={"../../public/assets/footer/iconotiktokcemaco.png"} className="me-1" width={28} alt="tik tok logo"/>
-            <img src={"../../public/assets/footer/FacebookFooterNew.png"} width={28} className="me-1" alt="facebook logo"/>
-            <img src={"../../public/assets/footer/InstagramFooterNew.png"} className="me-1" width={28} alt="insta logo"/>
-            <img src={"../../public/assets/footer/twitter.png"} width={28} className="me-1" alt="twitter logo"/>
-            <img src={"../../public/assets/footer/YouTubeFooterNew.png"} width={28} className="me-1" alt="youtube logo"/>
-            <img src={"../../public/assets/footer/PinterestFooterNew.png"} width={28} className="me-1" alt="pintereslogo"/>
+            <img src={"/assets/footer/iconotiktokcemaco.png"} className="me-1" width={28} alt="tik tok logo"/>
+            <img src={"/assets/footer/FacebookFooterNew.png"} width={28} className="me-1" alt="facebook logo"/>
+            <img src={"/assets/footer/InstagramFooterNew.png"} className="me-1" width={28} alt="insta logo"/>
+            <img src={"/assets/footer/twitter.png"} width={28} className="me-1" alt="twitter logo"/>
+            <img src={"/assets/footer/YouTubeFooterNew.png"} width={28} className="me-1" alt="youtube logo"/>
+            <img src={"/assets/footer/PinterestFooterNew.png"} width={28} className="me-1" alt="pintereslogo"/>
           </div>
         </div>
       </div>
