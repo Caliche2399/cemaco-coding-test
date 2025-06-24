@@ -65,8 +65,8 @@ app.post('/login', (req, res) => {
 
     return res.json({
       token,
-      rol: user.rol,
-      email: user.email
+      rol: user.rol_id,
+      usuario: user.usuario
     });
   });
 });
@@ -79,6 +79,17 @@ app.get('/usuarios', (req, res) => {
     res.json(results);
   });
 });
+
+app.get('/usuarios/:user', (req, res) => {
+  const { user } = req.params;
+  const query = 'SELECT * FROM usuarios WHERE usuario = ?';
+  db.query(query, [user], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error al obtener los datos' });
+    }
+    res.json(results);
+  });
+})
 
 app.get('/productos', (req, res) => {
   db.query('SELECT * FROM productos', (err, results) => {
@@ -145,6 +156,17 @@ app.delete('/productos/:id', (req, res) => {
     res.json({ message: 'Producto eliminado correctamente' });
   });
 });
+
+app.get('/roles/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'SELECT * FROM roles WHERE id = ?';
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error al obtener los datos' });
+    }
+    res.json(results);
+  });
+})
 
 
 app.listen(port, () => {

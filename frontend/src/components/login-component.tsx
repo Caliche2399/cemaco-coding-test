@@ -46,10 +46,12 @@ export const LoginComponent = ({showModal, setShowModal}: LoginComponentProps) =
 
         const data = await res.json();
 
+        console.log("ACACCCC", data);
+
         if (res.ok) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('rol', data.rol);
-          localStorage.setItem('email', data.email);
+          localStorage.setItem('identifier', data.usuario);
           navigate('/products');
         } else {
           setErrorMessage(data.message || 'Error al iniciar sesión');

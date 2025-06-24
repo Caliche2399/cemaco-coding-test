@@ -1,5 +1,5 @@
 import {Navbar, Nav, Dropdown} from 'react-bootstrap';
-import { FaRegUserCircle } from "react-icons/fa";
+import {FaRegUserCircle, FaSignOutAlt} from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import {type ReactElement, useEffect, useState} from "react";
 import {LoginComponent} from "./login-component.tsx";
@@ -8,6 +8,21 @@ const NavbarComponent = (): ReactElement => {
 
   const [scrolled, setScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, [showModal]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('identifier');
+    setIsLoggedIn(false);
+    window.location.href = '/'; // Redirige al home o recarga
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,10 +113,25 @@ const NavbarComponent = (): ReactElement => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav className="mr-auto">
-              <button onClick={()=> setShowModal(true)} className="text-white text-decoration-none d-flex align-items-center bg-transparent border-0">
-                <FaRegUserCircle className="me-2" size={24} />
-                Iniciar Sesión
-              </button>
+              {
+                isLoggedIn ? (
+                  <button
+                    onClick={handleLogout}
+                    className="text-white text-decoration-none d-flex align-items-center bg-transparent border-0"
+                  >
+                    <FaSignOutAlt className="me-2" size={24} />
+                    Cerrar Sesión
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="text-white text-decoration-none d-flex align-items-center bg-transparent border-0"
+                  >
+                    <FaRegUserCircle className="me-2" size={24} />
+                    Iniciar Sesión
+                  </button>
+                )
+              }
               <a className="text-white ms-3">
                 <FaShoppingCart size={24}/>
               </a>
