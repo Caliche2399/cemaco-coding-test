@@ -5,17 +5,14 @@ const cors = require('cors'); // <--- importar cors
 const app = express();
 const port = 3000;
 
-// Middleware para permitir CORS
 app.use(cors({
-  origin: '*', // Permite cualquier origen (en desarrollo). Para producción usa un dominio específico.
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Middleware para recibir JSON
 app.use(express.json());
 
-// Conexión a MySQL
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'myuser',
@@ -32,19 +29,26 @@ db.connect((err) => {
 });
 
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'supersecreto'; 
+const SECRET_KEY = 'supersecreto';
 
 app.post('/login', (req, res) => {
-  const { usuario, password } = req.body;
+  const { identifier, password } = req.body;
 
-  const query = 'SELECT * FROM usuarios WHERE usuario = ? LIMIT 1';
-  db.query(query, [usuario], (err, results) => {
+  if (!identifier || !password) {
+    return res.status(400).json({ message: 'Faltan campos obligatorios' });
+  }
+
+  const isEmail = identifier.includes('@');
+  const campoBusqueda = isEmail ? 'email' : 'usuario';
+  const query = `SELECT * FROM usuarios WHERE ${campoBusqueda} = ? LIMIT 1`;
+
+  db.query(query, [identifier], (err, results) => {
     if (err) {
       return res.status(500).json({ error: 'Error de servidor' });
     }
 
     if (results.length === 0) {
-      return res.status(401).json({ message: 'Usuario no encontrado' });
+      return res.status(401).json({ message: 'Usuario o correo no encontrado' });
     }
 
     const user = results[0];
@@ -54,19 +58,18 @@ app.post('/login', (req, res) => {
     }
 
     const token = jwt.sign(
-      { usuario: user.usuario, rol: user.rol },
-      SECRET_KEY,
-      { expiresIn: '1h' }
+        { usuario: user.usuario, rol: user.rol },
+        SECRET_KEY,
+        { expiresIn: '1h' }
     );
 
     return res.json({
       token,
-      rol: user.rol,  // ← puedes usar esto en frontend para saber el tipo de usuario
+      rol: user.rol,
       email: user.email
     });
   });
 });
-
 
 app.get('/usuarios', (req, res) => {
   db.query('SELECT * FROM usuarios', (err, results) => {

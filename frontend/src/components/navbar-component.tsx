@@ -2,17 +2,19 @@ import {Navbar, Nav, Dropdown} from 'react-bootstrap';
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import {type ReactElement, useEffect, useState} from "react";
-import { Link } from 'react-router-dom';
+import {LoginComponent} from "./login-component.tsx";
 
 const NavbarComponent = (): ReactElement => {
 
   const [scrolled, setScrolled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0 && !scrolled) {
+      if (window.scrollY === 0 && scrolled) {
+        setScrolled(false);
+      } else if (window.scrollY > 0 && !scrolled) {
         setScrolled(true);
-        window.removeEventListener('scroll', handleScroll);
       }
     };
 
@@ -96,17 +98,20 @@ const NavbarComponent = (): ReactElement => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav className="mr-auto">
-              <Link to="/login" className="text-white text-decoration-none d-flex align-items-center">
+              <button onClick={()=> setShowModal(true)} className="text-white text-decoration-none d-flex align-items-center bg-transparent border-0">
                 <FaRegUserCircle className="me-2" size={24} />
                 Iniciar Sesión
-              </Link>
+              </button>
               <a className="text-white ms-3">
                 <FaShoppingCart size={24}/>
               </a>
             </Nav>
           </Navbar.Collapse>
         </div>
-      </Navbar></>
+      </Navbar>
+
+      <LoginComponent showModal={showModal} setShowModal={setShowModal} />
+    </>
   );
 };
 
