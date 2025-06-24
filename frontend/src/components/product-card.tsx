@@ -16,7 +16,18 @@ export const ProductCard = ({product}: ProductCardProps): ReactElement => {
       {filteredProducts.map((p, index) => (
         <Col key={index + "producto"} sm={6} md={6} lg={6} xl={6}>
           <Card className="mb-4 rounded-5">
-            <Card.Img src={"/assets/foto-no-disponible.png"} width={50} height={200} alt={p.nombre}/>
+            <Card.Img
+              src={p.imagen || "/assets/foto-no-disponible.png"}
+              width={50}
+              height={200}
+              className="p-5"
+              alt={p.nombre}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // previene un bucle infinito
+                target.src = "/assets/foto-no-disponible.png"; // imagen por defecto
+              }}
+            />
             <Card.Header>
               <Card.Title>{p.nombre}</Card.Title>
             </Card.Header>
