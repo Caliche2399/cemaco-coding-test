@@ -41,5 +41,5 @@ INSERT INTO usuarios (nombre, usuario, email, password, rol_id) VALUES
 ('Cemaco', 'user', 'usuario@example.com', 'user', 2);
 
 INSERT INTO productos (nombre, descripcion, precio, sku, inventario, imagen) VALUES
-('Silla Ergonómica', 'Silla de oficina ergonómica con soporte lumbar', 125.50, 'SKU-001', 10, 'https://miapp.com/images/silla.jpg'),
+('Silla De Oficina', 'Silla de oficina con soporte lumbar', 125.50, 'SKU-001', 10, 'https://miapp.com/images/silla.jpg'),
 ('Escritorio Moderno', 'Escritorio de madera con acabado moderno', 299.99, 'SKU-002', 5, 'https://miapp.com/images/escritorio.jpg');
