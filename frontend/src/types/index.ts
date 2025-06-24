@@ -3,7 +3,7 @@ export type ProductType = {
     nombre: string,
     descripcion: string,
     precio: string,
-    SKU: string,
+    sku: string,
     inventario: number,
     imagen: string
 }

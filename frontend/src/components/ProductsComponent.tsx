@@ -3,6 +3,7 @@ import type {ProductType, RoleType, UserType} from "../types";
 import {Alert, Button, Table} from "react-bootstrap";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import {DeleteProductModal} from "./modals/delete-product-modal.tsx";
+import {ProductsModal} from "./modals/ProductsModal.tsx";
 
 export const ProductsComponent = (): ReactElement => {
   const [usuario, setUsuario] = useState<UserType>();
@@ -13,7 +14,7 @@ export const ProductsComponent = (): ReactElement => {
     nombre: "",
     descripcion: "",
     precio: "",
-    SKU: "",
+    sku: "",
     inventario: 0,
     imagen: ""
   });
@@ -40,6 +41,20 @@ export const ProductsComponent = (): ReactElement => {
     setTimeout(() => setShowSuccessAlert(false), 3000); // Ocultar después de 3s
   };
 
+  const handleAddSuccess = () => {
+    setFeedback("Producto agregado correctamente");
+    setShowSuccessAlert(true);
+    getProducts();
+    setTimeout(() => setShowSuccessAlert(false), 3000);
+  }
+
+  const handleEditSuccess = () => {
+    setFeedback("Producto editado correctamente");
+    setShowSuccessAlert(true);
+    getProducts();
+    setTimeout(() => setShowSuccessAlert(false), 3000);
+  }
+
   useEffect(() => {
     const getUser = async() =>{
       try {
@@ -49,8 +64,6 @@ export const ProductsComponent = (): ReactElement => {
 
         const data = await res.json();
         setUsuario(data[0]);
-
-        console.log("USUARIO", data[0]);
 
         const rol = await fetch(`http://localhost:3000/roles/${data[0].rol_id}`);
         setRol((await rol.json())[0] as RoleType);
@@ -62,8 +75,6 @@ export const ProductsComponent = (): ReactElement => {
     getUser();
     getProducts();
   }, []);
-
-  console.log("ROL", rol)
 
   return (
     <div className="d-flex justify-content-center align-items-center w-100 flex-column py-5">
@@ -86,7 +97,7 @@ export const ProductsComponent = (): ReactElement => {
               nombre: "",
               descripcion: "",
               precio: "",
-              SKU: "",
+              sku: "",
               inventario: 0,
               imagen: ""
             });
@@ -150,6 +161,14 @@ export const ProductsComponent = (): ReactElement => {
         show={showDeleteModal}
         setShow={setShowDeleteModal}
         onDeleteSuccess={handleDeleteSuccess}
+      />
+
+      <ProductsModal
+        show={showProductModal}
+        product={selectedProduct}
+        setShow={setShowProductModal}
+        action={action}
+        onSuccess={action === "add"? handleAddSuccess: handleEditSuccess}
       />
     </div>
   );

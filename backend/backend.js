@@ -100,16 +100,17 @@ app.get('/productos', (req, res) => {
   });
 });
 
-app.put('/productos', (req, res) => {
-  const { id, nombre, descripcion, SKU, inventario, imagen } = req.body;
+app.put('/productos/:id', (req, res) => {
+  const { id } = req.params;
+  const { nombre, descripcion,precio, sku, inventario, imagen } = req.body;
 
   const query = `
     UPDATE productos
-    SET nombre = ?, descripcion = ?, SKU = ?, inventario = ?, imagen = ?
+    SET nombre = ?, descripcion = ?, precio= ?, sku = ?, inventario = ?, imagen = ?
     WHERE id = ?
   `;
 
-  db.query(query, [nombre, descripcion, SKU, inventario, imagen, id], (err, result) => {
+  db.query(query, [nombre, descripcion, precio, sku, inventario, imagen, id], (err, result) => {
     if (err) {
       return res.status(500).json({ error: 'Error al actualizar el producto' });
     }
@@ -122,16 +123,18 @@ app.put('/productos', (req, res) => {
   });
 });
 
+
 app.post('/productos', (req, res) => {
-  const { nombre, descripcion, SKU, inventario, imagen } = req.body;
+  const { nombre, descripcion, precio, sku, inventario, imagen } = req.body;
 
   const query = `
-    INSERT INTO productos (nombre, descripcion, SKU, inventario, imagen)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO productos (nombre, descripcion, precio, sku, inventario, imagen)
+    VALUES (?, ?, ?, ?, ?, ?)
   `;
 
-  db.query(query, [nombre, descripcion, SKU, inventario, imagen], (err, result) => {
+  db.query(query, [nombre, descripcion, precio, sku, inventario, imagen], (err, result) => {
     if (err) {
+      console.log(err);
       return res.status(500).json({ error: 'Error al crear el producto' });
     }
 
