@@ -181,11 +181,12 @@ export const ProductCard = ({product}: ProductCardProps): ReactElement => {
         <Row>
           {currentProducts.map((p, index) => (
             <Col key={index + "producto"} sm={4} md={4} lg={4} xl={4}>
-              <Card className="mb-4 rounded-5">
+              <Card className="mb-4 rounded-5" style={{height: "500px"}}>
                 <Card.Img
                   src={p.imagen || "/assets/foto-no-disponible.png"}
                   width={50}
                   height={200}
+                  style={{objectFit: "fill"}}
                   className="p-3 rounded-5"
                   alt={p.nombre}
                   onError={(e) => {
@@ -197,11 +198,11 @@ export const ProductCard = ({product}: ProductCardProps): ReactElement => {
                 <Card.Header className="bg-transparent border-0">
                   <Card.Title>{p.nombre}</Card.Title>
                 </Card.Header>
-                <div className="d-flex flex-column p-3">
+                <div className="d-flex flex-column p-3 flex-grow-1">
                   <span>{p.descripcion}</span>
                   <span className="mt-3">Q {Number(p.precio).toFixed(2)}</span>
                 </div>
-                <Card.Footer className="d-flex flex-column gap-2 align-items-start p-4 bg-transparent border-0">
+                <Card.Footer className="d-flex flex-column gap-2 align-items-start p-4 bg-transparent border-0 flex-grow-1">
                   <span className="small">24 horas dentro de la capital</span>
                   <button className="cards-button rounded-5 px-3 d-flex justify-content-center align-items-center">
                     Agregar <CiShoppingCart size={20} className="ms-2"/>

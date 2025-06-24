@@ -17,7 +17,8 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'myuser',
   password: 'mypassword',
-  database: 'myapp'
+  database: 'myapp',
+  charset: 'utf8mb4'
 });
 
 db.connect((err) => {
