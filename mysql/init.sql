@@ -1,5 +1,7 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS myapp;
+CREATE DATABASE IF NOT EXISTS myapp
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
 USE myapp;
 
 -- Crear tabla de roles
@@ -11,22 +13,22 @@ CREATE TABLE IF NOT EXISTS roles (
 -- Crear tabla de usuarios con relación a roles
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    usuario VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    nombre VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    usuario VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    email VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
+    password VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     rol_id INT,
     FOREIGN KEY (rol_id) REFERENCES roles(id)
 );
 
 CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
+    nombre VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    descripcion TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     precio DECIMAL(10,2) NOT NULL,
-    sku VARCHAR(50) UNIQUE NOT NULL,
+    sku VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci UNIQUE NOT NULL,
     inventario INT NOT NULL DEFAULT 0,
-    imagen VARCHAR(255)
+    imagen VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 );
 
 -- Insertar roles
