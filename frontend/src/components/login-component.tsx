@@ -48,7 +48,6 @@ export const LoginComponent = ({showModal, setShowModal}: LoginComponentProps) =
 
         if (res.ok) {
           localStorage.setItem('token', data.token);
-          localStorage.setItem('rol', data.rol);
           localStorage.setItem('identifier', data.usuario);
           setShowModal(false);
           navigate('/products');

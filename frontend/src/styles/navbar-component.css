@@ -20,6 +20,14 @@
     }
 }
 
+.custom-dropdown-data-toogle {
+    background-color: transparent !important;
+    color: black !important;
+    border: none !important;
+    font-weight: bold !important;
+    font-size: 18px;
+}
+
 .grey-section{
     background-color: #e7e7e7 !important;
     color: black;

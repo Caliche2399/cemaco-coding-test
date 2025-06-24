@@ -109,52 +109,64 @@ export const ProductsComponent = (): ReactElement => {
         )
       }
 
-      <Table striped hover responsive className="rounded-4 overflow-hidden">
-        <thead className="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Inventario</th>
-          <th>Precio</th>
-          <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        {productos && productos.length > 0 ? (
-          productos?.map(producto => (
-            <tr key={producto.id} className="small">
-              <td>{producto.id}</td>
-              <td>{producto.nombre}</td>
-              <td>{producto.descripcion}</td>
-              <td>{producto.inventario} Unidades</td>
-              <td>Q {Number(producto.precio).toFixed(2)}</td>
-              <td>
-                <div className="d-flex gap-2">
-                  <Button variant="secondary" size="sm" onClick={() => {
-                    setSelectedProduct(producto);
-                    setAction("edit");
-                    setShowProductModal(true);
-                  }}>
-                    <FaEdit />
-                  </Button>
-                  <Button variant="danger" size="sm" onClick={() => {
-                    setSelectedProduct(producto);
-                    setShowDeleteModal(true);
-                  }}>
-                    <FaTrashAlt/>
-                  </Button>
-                </div>
+      <div className="table-responsive w-100 rounded-4">
+        <Table striped bordered hover responsive="sm" className="rounded-4 overflow-hidden">
+          <thead className="table-dark">
+          <tr>
+            <th style={{ whiteSpace: "nowrap" }}>Nombre</th>
+            <th>Descripción</th>
+            <th style={{ whiteSpace: "nowrap" }}>Inventario</th>
+            <th style={{ whiteSpace: "nowrap" }}>Precio</th>
+            <th style={{ whiteSpace: "nowrap" }}>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          {productos && productos.length > 0 ? (
+            productos.map((producto) => (
+              <tr key={producto.id}>
+                <td style={{ whiteSpace: "nowrap" }} className="text-center">{producto.nombre}</td>
+                <td style={{ wordBreak: "break-word", minWidth: 100 }} className="text-center">{producto.descripcion}</td>
+                <td style={{ whiteSpace: "nowrap" }} className="text-center">{producto.inventario} Unidades</td>
+                <td style={{ whiteSpace: "nowrap" }}>Q {Number(producto.precio).toFixed(2)}</td>
+                <td>
+                  <div className="d-flex flex-wrap gap-2">
+                    <Button
+                      variant="secondary"
+                      className="w-100"
+                      size="sm"
+                      onClick={() => {
+                        setSelectedProduct(producto);
+                        setAction("edit");
+                        setShowProductModal(true);
+                      }}
+                    >
+                      <FaEdit />
+                    </Button>
+                    <Button
+                      variant="danger"
+                      className="w-100"
+                      size="sm"
+                      onClick={() => {
+                        setSelectedProduct(producto);
+                        setShowDeleteModal(true);
+                      }}
+                    >
+                      <FaTrashAlt />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={5} className="text-center">
+                No hay productos disponibles.
               </td>
             </tr>
-          ))
-        ) : (
-          <tr>
-            <td colSpan={5} className="text-center">No hay productos disponibles.</td>
-          </tr>
-        )}
-        </tbody>
-      </Table>
+          )}
+          </tbody>
+        </Table>
+      </div>
 
       <DeleteProductModal
         product={selectedProduct as ProductType}
