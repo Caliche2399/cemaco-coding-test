@@ -2,6 +2,8 @@
 
 Este proyecto está compuesto por tres servicios principales:
 
+Tomar en cuenta que puede tomar un tiempo en funcionar el backend debido a que tarda un poco en iniciar la BD
+
 - **Frontend**: Aplicación React con Vite.
 - **Backend**: API desarrollada en Node.js.
 - **Base de datos**: MySQL con script de inicialización.

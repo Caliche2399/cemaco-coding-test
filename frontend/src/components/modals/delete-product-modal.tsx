@@ -16,6 +16,7 @@ export const DeleteProductModal = (props: DeleteProductModalProps) => {
         method: 'DELETE'
       });
       if (response.ok) {
+        props.onDeleteSuccess();
         props.setShow(false);
       }
     } catch (error) {
